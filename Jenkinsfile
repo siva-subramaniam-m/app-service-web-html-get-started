@@ -13,8 +13,8 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = 'test_html_app' 
-    def webAppName = 'html_app_gl'
+    def resourceGroup = 'testHtmlApp' 
+    def webAppName = 'htmlAppGl'
     // login Azure
     withCredentials([azureServicePrincipal('customerzeroonboard')]) {
       sh '''
