@@ -12,10 +12,6 @@ node {
     checkout scm
   }
   
-  stage('build') {
-    
-  }
-  
   stage('deploy') {
     def resourceGroup = 'helloworld-1563959593909-rg' 
     def webAppName = 'helloworld-1563959593909'
@@ -26,8 +22,10 @@ node {
         az account set -s $AZURE_SUBSCRIPTION_ID
       '''
     }
+    sh '''
     cd app-service-web-html-get-started
     az webapp up --location westeurope -g $resourceGroup --name $webAppName
+    '''
     
     // get publish settings
     // def pubProfilesJson = sh script: "az webapp deployment list-publishing-profiles -g $resourceGroup -n $webAppName", returnStdout: true
