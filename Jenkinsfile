@@ -23,7 +23,7 @@ node {
       '''
     }
     sh '''
-        az webapp up --location westeurope --resource-group $resourceGroup --name $webAppName'
+        az webapp up --location westeurope --resource-group $resourceGroup --name $webAppName
     '''
     
     // get publish settings
