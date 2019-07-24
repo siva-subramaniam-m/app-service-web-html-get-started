@@ -22,7 +22,9 @@ node {
         az account set -s $AZURE_SUBSCRIPTION_ID
       '''
     }
-    sh 'az webapp up --location westeurope -g $resourceGroup --name $webAppName'
+    sh '''
+        az webapp up --location westeurope --resource-group $resourceGroup --name $webAppName'
+    '''
     
     // get publish settings
     // def pubProfilesJson = sh script: "az webapp deployment list-publishing-profiles -g $resourceGroup -n $webAppName", returnStdout: true
