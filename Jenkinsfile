@@ -13,10 +13,10 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = 'siva-subramaniam.m_rg_Windows_westeurope' 
-    def webAppName = 'gltestHtml123'
-    def webAppPlan = 'siva-subramaniam.m_asp_Windows_westeurope_0'
-    def location = 'westeurope'
+    //def resourceGroup = 'siva-subramaniam.m_rg_Windows_westeurope' 
+    //def webAppName = 'gltestHtml123'
+    //def webAppPlan = 'siva-subramaniam.m_asp_Windows_westeurope_0'
+    //def location = 'westeurope'
     // login Azure
     withCredentials([azureServicePrincipal('customerzeroonboard')]) {
       sh '''
@@ -24,7 +24,7 @@ node {
         az account set -s $AZURE_SUBSCRIPTION_ID
       '''
     }
-    sh "az webapp up --resource-group $resourceGroup --plan $webAppPlan --name $webAppName --sku FREE --subscription $SUBSCRIPTION --location $location"
+    sh "az webapp up --resource-group $RES_GROUP --plan $WEB_APP_PLAN --name $WEB_APP --sku FREE --subscription $SUBSCRIPTION --location $LOCATION"
     
     // get publish settings
     // def pubProfilesJson = sh script: "az webapp deployment list-publishing-profiles -g $resourceGroup -n $webAppName", returnStdout: true
