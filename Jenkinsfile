@@ -3,8 +3,7 @@ node {
     checkout scm
   }
   
-  stage('deploy') {
-    
+  stage('deploy') { 
     // login Azure
     withCredentials([azureServicePrincipal('customerzeroonboard')]) {
       sh '''
